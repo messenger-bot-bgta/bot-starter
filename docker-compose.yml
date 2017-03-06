@@ -1,0 +1,27 @@
+version: '2.1'
+
+services:
+  bot:
+    build:
+      context: .
+      dockerfile: docker/bot/Dockerfile
+    volumes:
+      - .:/usr/src/app
+    healthcheck:
+      test: ["CMD", "nc", "-z", "-w4", "bot", "3000"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+  ngrok:
+    image: 68f56aa6e349
+    tty: true
+    ports:
+      - "4047:4040"
+    depends_on:
+      bot:
+        condition: service_healthy
+    environment:
+      - APP_ID=YOUR_APP_ID
+      - APP_SECRET=YOUR_APP_SECRET
+      - FIELDS=messages,messaging_postbacks
+      - VERIFY_TOKEN=YOUR_VERIFY_TOKEN
