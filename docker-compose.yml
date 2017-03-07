@@ -16,7 +16,7 @@ services:
     image: ylecuyer/ngrok
     tty: true
     ports:
-      - "4047:4040"
+      - "4040:4040"
     depends_on:
       bot:
         condition: service_healthy
