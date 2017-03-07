@@ -6,5 +6,5 @@ Bot.on :postback do |postback|
 end
 
 Bot.on :message do |message|
-  message.reply_with_text(message.text)
+  message.reply(text: message.text)
 end
