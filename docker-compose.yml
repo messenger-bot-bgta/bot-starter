@@ -13,7 +13,7 @@ services:
       timeout: 5s
       retries: 5
   ngrok:
-    image: 68f56aa6e349
+    image: ylecuyer/ngrok
     tty: true
     ports:
       - "4047:4040"
