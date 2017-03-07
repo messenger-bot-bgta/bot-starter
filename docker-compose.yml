@@ -20,8 +20,4 @@ services:
     depends_on:
       bot:
         condition: service_healthy
-    environment:
-      - APP_ID=YOUR_APP_ID
-      - APP_SECRET=YOUR_APP_SECRET
-      - FIELDS=messages,messaging_postbacks
-      - VERIFY_TOKEN=YOUR_VERIFY_TOKEN
+    env_file: .env 
